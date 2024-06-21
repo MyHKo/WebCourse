@@ -1,0 +1,5 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Explicitly set line endings for specific file types
+*.js eol=lf
