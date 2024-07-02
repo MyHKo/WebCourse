@@ -2,8 +2,12 @@
 
 function getNUmber() {
     let number = prompt("number?");
-    while (!isFinite(number)){
-        number = prompt("number?");
+    while (true){
+        switch (number) {
+            case null:
+                return;
+            case isFinite(+number):
+                return number;
+        }
     }
-    return number;
 }
