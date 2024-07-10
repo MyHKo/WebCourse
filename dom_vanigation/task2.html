@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr><td>1</td><td>2</td></tr>
+    <tr><td>3</td><td>4</td></tr>
+</table>
+<script>
+    let rows = document.body.firstElementChild.rows
+    for(let i = 0; i < rows.length; i++){
+        rows[i].cells[i].style.backgroundColor = "red"
+    }
+</script>
+</body>
+</html>
