@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<li>1</li>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>4</li>
+    <ul>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</ul>
+</body>
+<script>
+    let a = document.body.firstElementChild.nextElementSibling.querySelectorAll("li")
+    a.forEach((item) => alert(item.textContent))
+    alert(a.length)
+</script>
+</html>
