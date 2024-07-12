@@ -1,0 +1,15 @@
+.timer {
+    display: flex;
+}
+
+.minutes {
+    color: green;
+}
+
+.hours {
+    color: red;
+}
+
+.seconds {
+    color: blue;
+}
