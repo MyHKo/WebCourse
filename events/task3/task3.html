@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="height:2000px">
+
+Нажмите на поле для перемещения мяча.
+<br> Мяч не должен выходить за границы поля.
+
+
+<div id="field">
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+</div>
+
+
+</body>
+
+<script>
+    const ball = document.querySelector("#ball");
+    const field = document.querySelector("#field");
+    field.addEventListener("click", (event) => {
+        const fieldCoords = field.getBoundingClientRect()
+
+        let top = event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight/2;
+        let left = event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth/2;
+
+        if(top < field.clientTop)
+            top = 0
+        if(left < field.clientLeft)
+            left = 0
+        if(top + ball.clientHeight > field.clientHeight)
+            top = field.clientHeight - ball.clientHeight
+        if(left + ball.clientWidth > field.clientWidth)
+            left = field.clientWidth - ball.clientWidth
+
+        ball.style.top = top + "px"
+        ball.style.left = left + "px"
+    });
+</script>
+</html>

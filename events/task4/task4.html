@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="list">
+    <div id="button">
+        ▼
+    </div>
+    <div >
+        Сладости (нажми меня)!
+    </div>
+</div>
+
+<ul>
+    <li>Пирожное</li>
+    <li>Пончик</li>
+    <li>Мёд</li>
+</ul>
+
+</body>
+<script>
+    const button = document.getElementById("button")
+    const listHeader = document.getElementById("list")
+    const list = document.querySelector("ul")
+    listHeader.opened = true;
+    listHeader.addEventListener("click", (event) =>{
+        if(listHeader.opened){
+            button.textContent = "▶"
+            list.style.display = "none";
+            listHeader.opened = false
+        } else {
+            button.textContent = "▼"
+            list.style.display = "block";
+            listHeader.opened = true
+        }
+    })
+</script>
+</html>
