@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<style>
+    li {
+        cursor: pointer;
+    }
+</style>
+
+<ul class="tree" id="tree">
+    <li><span>Животные</span>
+        <ul>
+            <li><span>Млекопитающие</span>
+                <ul>
+                    <li><span>Коровы</span></li>
+                    <li><span>Ослы</span></li>
+                    <li><span>Собаки</span></li>
+                    <li><span>Тигры</span></li>
+                </ul>
+            </li>
+            <li><span>Другие</span>
+                <ul>
+                    <li><span>Змеи</span></li>
+                    <li><span>Птицы</span></li>
+                    <li><span>Ящерицы</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><span>Рыбы</span>
+        <ul>
+            <li><span>Аквариумные</span>
+                <ul>
+                    <li><span>Гуппи</span></li>
+                    <li><span>Скалярии</span></li>
+                </ul>
+            </li>
+            <li><span>Морские</span>
+                <ul>
+                    <li><span>Морская форель</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+
+<script>
+    document.addEventListener("click", (event) => {
+        if(event.target.tagName === "SPAN") {
+            if (event.target.parentNode.children.length > 1) {
+                if (event.target.parentNode.lastElementChild.style.display !== "none")
+                    event.target.parentNode.lastElementChild.style.display = "none"
+                else
+                    event.target.parentNode.lastElementChild.style.display = "block"
+            }
+        }
+    });
+</script>
+
+</html>
