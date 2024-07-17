@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+<p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+
+<button data-tooltip="эта подсказка должна быть длиннее, чем элемент">Короткая кнопка</button>
+<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+
+<p>Прокрутите страницу, чтобы кнопки оказались у верхнего края, а затем проверьте правильно ли выводятся подсказки.</p>
+
+
+<script>
+    let tooltip;
+    document.addEventListener("mouseover", function(event) {
+       if(event.target.dataset.hasOwnProperty("tooltip")) {
+           const note = document.createElement("div");
+           const buttonCoordinates = event.target.getClientRects()
+           const middle = buttonCoordinates[0].left + event.target.offsetWidth / 2
+           let top;
+           let left;
+           note.innerHTML = event.target.dataset.tooltip
+           note.classList.add("tooltip")
+           tooltip = note
+           document.body.append(note)
+           left = middle - note.offsetWidth/2 + "px"
+           top = buttonCoordinates[0].top + - note.offsetHeight - 5 + "px"
+
+           if(parseInt(left) < 0)
+               left = "5px"
+
+           if(parseInt(top) < 0)
+               top = "5px"
+
+           note.style.top = top
+           note.style.left = left
+       }
+    });
+    document.addEventListener("mouseout", function (event){
+        if(event.target.dataset.hasOwnProperty("tooltip"))
+            tooltip.remove()
+    });
+</script>
+
+</body>
+</html>
