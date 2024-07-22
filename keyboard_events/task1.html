@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    function runOnKeys(func, ...codes){
+        let pressed = new Set();
+        document.onkeyup = (event) => {
+            pressed.delete(event.code)
+        }
+            document.onkeydown = (event) => {
+                pressed.add(event.code)
+                console.log(pressed)
+                for(let i = 0; i < codes.length; i++){
+                    if(!pressed.has(codes[i]))
+                        return
+                }
+               console.log('hit')
+            }
+
+    }
+
+    runOnKeys(
+        () => alert("Привет!"),
+        "KeyQ",
+        "KeyW"
+    );
+
+
+</script>
+</html>
