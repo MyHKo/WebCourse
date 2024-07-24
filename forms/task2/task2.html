@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="my.css">
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+<ul>
+    <li>Кликните на div ниже, чтобы отредактировать текст.</li>
+    <li>Нажатие на Enter или потеря фокуса с ввода сохранят содержимое.</li>
+</ul>
+
+HTML-код разрешён.
+
+<div id="view" class="view" tabindex="1">Текст</div>
+
+<script>
+    const text = document.querySelector(".view");
+    const textarea = document.createElement("textarea")
+    textarea.tabIndex = 1
+    textarea.className = text.className
+    textarea.id = text.id
+    text.tabIndex = 1
+
+    text.addEventListener("focus", (event) => {
+        textarea.innerHTML = text.innerHTML
+        text.replaceWith(textarea)
+        textarea.focus()
+    })
+
+    textarea.addEventListener("blur", (event) => {
+        text.innerHTML = textarea.value
+        textarea.replaceWith(text)
+    })
+</script>
+
+</body>
+</html>
