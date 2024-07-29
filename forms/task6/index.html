@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>Press the button to show the form</h1>
+<button id="submit_button">BUTTON</button>
+
+<div id="prompt-form-container">
+    <form id="prompt-form">
+        <div id="prompt-message"></div>
+        <input name="text" type="text">
+        <input type="submit" value="Ok">
+        <input type="button" name="cancel" value="Отмена">
+    </form>
+</div>
+
+<script>
+    const showForm = document.querySelector("#submit_button")
+
+
+    showForm.addEventListener("click", (event) => {
+        showPrompt("Type something smart<br>Please", function (value) {alert(value)})
+    });
+
+    function showPrompt(html, callback){
+        const formContainer = document.querySelector("#prompt-form-container")
+        const form = formContainer.firstElementChild
+
+        form.firstElementChild.innerHTML = html
+        form.elements["text"].value = ""
+        formContainer.style.display = "inline-block"
+
+        form.onsubmit = (event) => {
+            event.preventDefault()
+            callback(event.target.elements["text"].value)
+            form.onsubmit = null
+            formContainer.style.display = "none"
+        }
+
+        form.elements[2].onclick = (event) => {
+            callback(null)
+            form.onsubmit = null
+            formContainer.style.display = "none"
+        }
+    }
+</script>
+
+</body>
+
+</html>
