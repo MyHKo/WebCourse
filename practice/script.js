@@ -9,3 +9,4 @@ let a = {
 
 
 console.log(a.toString())
+console.log(b.toString())
