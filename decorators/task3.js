@@ -7,7 +7,8 @@ function print(x){
 function debounce(func, wait){
     let lastCallTime = 0;
     return function (){
-        if(new Date().getTime() - lastCallTime > wait && lastCallTime !== 0){
+        if(new Date().getTime() - lastCallTime > wait){
+            lastCallTime = new Date().getTime();
             return func(...arguments);
         }
         lastCallTime = new Date().getTime();
