@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class HttpError extends Error {
+        constructor(response) {
+            super(`${response.status} for ${response.url}`);
+            this.name = 'HttpError';
+            this.response = response;
+        }
+    }
+
+    function loadJson(url) {
+        return fetch(url)
+            .then(response => {
+                if (response.status == 200) {
+                    return response.json();
+                } else {
+                    throw new HttpError(response);
+                }
+            });
+    }
+
+
+    async function demoGithubUser(){
+        let response;
+
+        while(true){
+            let name = prompt("Введіть ім’я?", "iliakan");
+
+            try{
+                response = await loadJson(`https://api.github.com/users/${name}`)
+                break
+            }
+            catch (err){
+            }
+
+        }
+
+        alert(`Ім’я та прізвище: ${response.name}.`);
+        return response;
+    }
+
+    demoGithubUser();
+</script>
+</body>
+</html>
