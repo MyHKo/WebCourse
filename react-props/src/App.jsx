@@ -3,7 +3,7 @@ import './App.css'
 function Greetings(props){
     const { name } = props
     return (
-        <h1 className="greeting">
+        <h1 className="greeting" style={props.style}>
             Hello <i className="emphasize">{name}</i>, Welcome!
         </h1>
     )
