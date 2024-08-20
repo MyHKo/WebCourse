@@ -12,9 +12,15 @@ class Greetings extends React.Component {
 }
 
 class App extends React.Component{
+    state = {
+        show: true
+    }
     render() {
-        return (
-            <Greetings name="Victor"></Greetings>
+        return (<><main>
+                <button onClick={() => {this.setState((prev) => ({show: !prev.show}))}}>Hide me</button>
+            {this.state.show && <Greetings name="Victor"></Greetings>}
+                </main>
+            </>
         )
     }
 }
