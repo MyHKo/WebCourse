@@ -10,9 +10,14 @@ class Greetings extends React.Component {
     }
 
     clickHandler = () => {
-        this.setState({
-            name: "Me"
-        })
+        if(this.state.name !== 'Me') {
+            this.setState({
+                name: "Me"
+            })
+        }
+        else {
+            this.props.onClick()
+        }
     }
 
     render() {
@@ -31,7 +36,9 @@ class App extends React.Component{
     render() {
         return (<><main>
                 <button onClick={() => {this.setState((prev) => ({show: !prev.show}))}}>Hide me</button>
-            {this.state.show && <Greetings initialName="Victor"></Greetings>}
+            {this.state.show && <Greetings initialName="Victor" onClick={() => {
+                this.setState({show: false})
+            }}></Greetings>}
                 </main>
             </>
         )
