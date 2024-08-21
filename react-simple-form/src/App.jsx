@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <main>
+            <RegisterForm />
+        </main>
+        <ConfirmDialog />
     </>
   )
+}
+
+function RegisterForm() {
+
+    return(
+        <>
+            <h1>Please register</h1>
+            <form>
+                <AppInput />
+                <AppInput />
+                <button type="submit">Submit</button>
+            </form>
+        </>
+    )
+}
+
+function ConfirmDialog() {
+
+    return (
+        <dialog>
+            <div>{title}</div>
+            <div>{children}</div>
+            <div>
+                <button>Confirm</button>
+                <button>Cancel</button>
+            </div>
+        </dialog>
+    )
+}
+
+function AppInput({label, name, ...rest}){
+    return (
+        <div>
+            <label htmlFor={name}>{label}</label>
+            <input id={name} {...rest}/>
+        </div>
+    )
 }
 
 export default App
