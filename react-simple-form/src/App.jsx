@@ -1,4 +1,5 @@
 import './App.css'
+import {useState} from "react";
 
 function App() {
 
@@ -13,6 +14,17 @@ function App() {
 }
 
 function RegisterForm() {
+    const [user, setUserData] = useState({email: "", password: ""})
+
+    const setUserEmail = (e) => {
+        const email = e.target.value
+        setUserData({...user, email})
+    }
+
+    const setUserPassword = (e) => {
+        const password = e.target.value
+        setUserData({ ...user, password})
+    }
 
     return(
         <>
@@ -23,15 +35,15 @@ function RegisterForm() {
                 name="email"
                 label="Label"
                 type="email"
-                onChage={console.log}
-                required={true}
+                onChage={setUserEmail}
+                required={user.email}
                 />
                 <AppInput
                 name="pwd"
                 label="Password"
                 type="email"
-                onChage={console.log}
-                required={true}
+                onChage={setUserPassword}
+                required={user.password}
                 />
 
                 <button type="submit">Submit</button>
