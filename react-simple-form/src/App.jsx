@@ -17,24 +17,38 @@ function RegisterForm() {
     return(
         <>
             <h1>Please register</h1>
+
             <form>
-                <AppInput />
-                <AppInput />
+                <AppInput
+                name="email"
+                label="Label"
+                type="email"
+                onChage={console.log}
+                required={true}
+                />
+                <AppInput
+                name="pwd"
+                label="Password"
+                type="email"
+                onChage={console.log}
+                required={true}
+                />
+
                 <button type="submit">Submit</button>
             </form>
         </>
     )
 }
 
-function ConfirmDialog() {
+function ConfirmDialog({title, children, confirm, cancel, open}) {
 
     return (
-        <dialog>
+        <dialog open={open}>
             <div>{title}</div>
             <div>{children}</div>
             <div>
-                <button>Confirm</button>
-                <button>Cancel</button>
+                <button type="button" onClick={confirm}>Confirm</button>
+                <button type="button" onClick={cancel}>Cancel</button>
             </div>
         </dialog>
     )
