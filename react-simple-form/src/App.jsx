@@ -2,18 +2,40 @@ import './App.css'
 import {useState} from "react";
 
 function App() {
+    const [user, setUser] = useState({})
+    const [confirmationOpen, setConfirmationOpen] = useState(false)
+    const [isConfirmed, setIsConfirmed] = useState(false)
+
+    const confirmUserData = (data) => {
+        setUser(data)
+        setConfirmationOpen(true)
+    }
+    const closeDialog =() => setConfirmationOpen(false)
+    const confirm = () => {
+        closeDialog();
+        setIsConfirmed(true)
+    }
+
 
   return (
     <>
         <main>
-            <RegisterForm />
+            {isConfirmed ? `Congratulations user ${user.email}`:
+            <RegisterForm onSubmit={confirmUserData} />}
         </main>
-        <ConfirmDialog />
+        <ConfirmDialog
+        title="Please confirm registration"
+        cancel={closeDialog}
+        open={confirmationOpen}
+        confirm={confirm}
+        >
+        <p>Please confirm your email: {user.email}</p>
+        </ConfirmDialog>
     </>
   )
 }
 
-function RegisterForm() {
+function RegisterForm({onSubmit}) {
     const [user, setUserData] = useState({email: "", password: ""})
 
     const setUserEmail = (e) => {
@@ -26,23 +48,37 @@ function RegisterForm() {
         setUserData({ ...user, password})
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        const { email, password } = user;
+
+        if(!email.includes("@"))
+            return
+
+        if(!password.trim())
+            return
+
+        onSubmit(user)
+    }
+
     return(
         <>
             <h1>Please register</h1>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <AppInput
                 name="email"
-                label="Label"
+                label="Email"
                 type="email"
-                onChage={setUserEmail}
+                onChange={setUserEmail}
                 required={user.email}
                 />
                 <AppInput
                 name="pwd"
                 label="Password"
-                type="email"
-                onChage={setUserPassword}
+                type="password"
+                onChange={setUserPassword}
                 required={user.password}
                 />
 
