@@ -1,6 +1,6 @@
 'use strict';
 
-function Fact({ fact }){
+export const Fact = ({ fact }) => {
     return (
         <article className="facts">
             <h1 className="fact">{fact.date}:{fact.name}</h1>
