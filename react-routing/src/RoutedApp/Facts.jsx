@@ -2,13 +2,16 @@
 import {ROUTES} from "./Routes.js";
 
 
-import {NavLink, useLoaderData} from "react-router-dom";
+import {NavLink, useLoaderData, useNavigate, useNavigation} from "react-router-dom";
 
 export const Facts = () => {
     const facts = useLoaderData()
+    const { state } = useNavigation()
     return (
         <article className="facts">
             <h1>Most known russian fails in 2022</h1>
+
+            <p>{state === "loading" ? "loading" :""}</p>
 
             <ul className="fact-list">
                 {facts.map((f) => (
