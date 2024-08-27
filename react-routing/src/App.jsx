@@ -59,7 +59,7 @@ function App() {
   }
 
   if(path === "/fact") {
-    return <Fact facts={route.data}/>
+     return <Fact facts={route.data}/>
   }
 }
 
