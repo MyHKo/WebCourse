@@ -1,7 +1,8 @@
 'use strict';
+import {ROUTES} from "./Routes.js";
 
 
-import {useLoaderData} from "react-router-dom";
+import {NavLink, useLoaderData} from "react-router-dom";
 
 export const Facts = () => {
     const facts = useLoaderData()
@@ -14,6 +15,7 @@ export const Facts = () => {
                     <li key={f.id} className="fact-item">
                         <time>{f.date ?? "Coming soon"}</time>
                         <h4>{f.name}</h4>
+                        <NavLink to={ROUTES.fact(f.id)} className="read-more"> ? </NavLink>
                         {/*<button*/}
                         {/*    className="read-more"*/}
                         {/*    type="button"*/}

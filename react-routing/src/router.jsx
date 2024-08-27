@@ -4,7 +4,7 @@ import {Layout} from "./RoutedApp/layout.jsx";
 import {Facts} from "./RoutedApp/Facts.jsx";
 import {fetchAllFacts} from "./RoutedApp/fetchAllFacts.js";
 import {Fact} from "./RoutedApp/Fact.jsx";
-import {fetchFactById} from "./RoutedApp/fetchFactById.js";
+import {fetchFactById, fetchFactByIdRouted} from "./RoutedApp/fetchFactById.js";
 import {ROUTES} from "./RoutedApp/Routes.js";
 import {ErrorPage} from "./RoutedApp/errorPage.jsx";
 
@@ -20,8 +20,9 @@ export const router = createBrowserRouter([
                 loader: fetchAllFacts
             },
             {
+                path: ROUTES.fact(),
                 element: <Fact />,
-                loader: fetchFactById
+                loader: fetchFactByIdRouted
             }
         ]
     }

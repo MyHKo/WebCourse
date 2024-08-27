@@ -1,4 +1,4 @@
-const ROUTES = {
+export const ROUTES = {
     facts: "/",
-    fact: (id) => `/fact/${id}`
+    fact: (id = null) => (id ? `/fact/${id}` : "/fact/:factId"),
 }
