@@ -1,6 +1,6 @@
 'use strict';
 
-import data from "./russian-fails.json"
+import data from "./RoutedApp/russian-fails.json"
 
 export const fetchFactById = (id) => {
     const fact = data.data.find((f) => f.id === id)

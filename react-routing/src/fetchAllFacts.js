@@ -1,5 +1,5 @@
 'use strict';
-import data from "./russian-fails.json"
+import data from "./RoutedApp/russian-fails.json"
 
 export const fetchAllFacts = () => {
     console.log()
