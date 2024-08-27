@@ -1,6 +1,5 @@
 'use strict';
 
-import "./facts.css"
 
 export const Facts = ({ facts, navigate }) => {
     return (
