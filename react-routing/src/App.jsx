@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {Facts} from "./facts"
-import {Fact} from"./fact"
+import {Facts} from "./Facts.jsx"
+import {Fact} from "./Fact.jsx"
 import {fetchAllFacts} from "./fetchAllFacts"
 import {fetchFactById} from "./fetchFactById"
 import './App.css'
