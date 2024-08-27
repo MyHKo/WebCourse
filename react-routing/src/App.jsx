@@ -16,7 +16,7 @@ function App() {
   const {status, path } = route;
 
   useEffect(() => {
-    setRoute((r) => ({...r, status:"fetching"}))
+    setRoute((r) => ({ ...r, status:"fetching" }))
 
     if(path === "/") {
       fetchAllFacts().then((response) => {
@@ -32,7 +32,7 @@ function App() {
     if(path === "/fact") {
       fetchFactById(route.params.id).then((response) => {
         setRoute({
-          path: "/facts",
+          path: "/fact",
           data: response,
           status: "success",
           params: {id: route.params.id}
@@ -59,7 +59,7 @@ function App() {
   }
 
   if(path === "/fact") {
-     return <Fact facts={route.data}/>
+     return <Fact fact={route.data}/>
   }
 }
 
