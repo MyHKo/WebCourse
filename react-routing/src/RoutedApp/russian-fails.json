@@ -1,0 +1,11 @@
+{
+  "data": [{"id": 1,
+    "date": "02/04/2022",
+    "name": "Banished from the Kyiv region",
+    "description": "Russian army was mercilessly thrown back after a series of defeats near the city of Kyiv"},
+    { "id": 2,
+      "date": "14/02/2022",
+      "name": "Lost Moscow Warship",
+      "description": "Moscow cruiser was the largest warship in the black sea fleet."}
+  ]
+}
