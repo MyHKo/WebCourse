@@ -1,13 +1,20 @@
 import './App.css'
+import {useSelector, useDispatch, Provider} from "react-redux"
+import {increment, decrement} from './reduxSlice.js'
 
 function App() {
+    const dispatch = useDispatch()
+const counter = useSelector(state => state.counter.value)
 
   return (
-    <>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-    </>
+      <>
+        <p>
+          count is {counter}
+        </p>
+      <button onClick={() => dispatch(increment())}>Increment
+      </button>
+          <button onClick={() => dispatch(decrement())}>Decrement</button>
+      </>
   )
 }
 
