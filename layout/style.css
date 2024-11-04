@@ -1,0 +1,12 @@
+.red-square {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: sticky;
+    top: 100%;
+    left: 200px;
+}
+
+body{
+    height: 2000vh;
+}
