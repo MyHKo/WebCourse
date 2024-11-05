@@ -1,4 +1,17 @@
 'use strict'
 
-let error = new Error()
-console.log(error.stack)
+class BaseError extends Error {
+    constructor (description, name) {
+        super(description)
+        this.name = name
+    }
+}
+
+let error = new BaseError("A big error", "ERROR")
+console.log("Beep");
+if(typeof error === "object") {
+     throw error;
+} else {
+    console.log(typeof error);
+}
+console.log("Beep");
