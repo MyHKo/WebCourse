@@ -10,7 +10,6 @@ class BaseError extends Error {
 let error = new BaseError("A big error", "ERROR")
 console.log("Beep");
 if(typeof error === "object") {
-     throw serror;
 } else {
     console.log(typeof error);
 }
