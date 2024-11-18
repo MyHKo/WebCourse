@@ -8,7 +8,7 @@ function camelize(string) {
         }
         return item;
     })
-    return arr.join("");wresre
+    return arr.join("");wresrefffffffffffffffffffff
 }
 
 console.log(camelize("-webkit-transition"));
