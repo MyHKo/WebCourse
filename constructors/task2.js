@@ -7,7 +7,7 @@ function makeCalculator() {
     };
 
     this.sum = function () {
-        console.log(this.a + this.b);
+        console.log(this.a + this.b);ввввввввввввв
     };
 
     this.mul = function () {
