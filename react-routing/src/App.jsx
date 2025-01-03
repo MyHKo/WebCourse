@@ -24,7 +24,7 @@ function App() {
           path: "/",
           data: response,
           status: "success",
-          params: {}wdawdawdawdawd
+          params: {}
         })
       })
     }
