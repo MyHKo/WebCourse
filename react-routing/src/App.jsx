@@ -4,6 +4,7 @@ import {Fact} from "./Fact.jsx"
 import {fetchAllFacts} from "./fetchAllFacts"
 import {fetchFactById} from "./fetchFactById"
 import './App.css'
+import Home from "./RoutedApp/Home.jsx";
 
 function App() {
   const [route, setRoute] = useState({
@@ -60,6 +61,10 @@ function App() {
 
   if(path === "/fact") {
      return <Fact fact={route.data}/>
+  }
+
+  if(path == "/home") {
+    return <Home />
   }
 }
 
