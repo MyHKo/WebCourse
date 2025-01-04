@@ -11,13 +11,21 @@ function MainText(){
     )
 }
 
+function Content(){
+    return (
+        <div>
+            <Header />
+            <MainText />
+        </div>
+    )
+}
+
 function App() {
 
   return (
     <>
       <div>
-          <Header />
-          <MainText />
+          <Content />
       </div>
     </>
   )
