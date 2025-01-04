@@ -22,6 +22,9 @@ function Content(){
 
 function App() {
 
+    console.log(Header())
+    console.log(Content())
+
   return (
     <>
       <div>
