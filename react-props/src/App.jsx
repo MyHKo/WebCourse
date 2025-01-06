@@ -17,7 +17,9 @@ function Input({ setName }){
         <>
         <input type={"text"} value={inputValue} onChange={(event) => {setInputValue(event.target.value)}}/>
             <br />
-        <button>Enter</button>
+        <button onClick={() => {
+            setName(inputValue)
+        }}>Enter</button>
         </>
     )
 }
