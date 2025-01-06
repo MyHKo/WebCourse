@@ -11,10 +11,11 @@ function Greetings(props){
 }
 
 function Input({ setName }){
+    const [inputValue, setInputValue] = useState("")
 
     return (
         <>
-        <input type={"text"}/>
+        <input type={"text"} value={inputValue} onChange={(event) => {setInputValue(event.target.value)}}/>
             <br />
         <button>Enter</button>
         </>
