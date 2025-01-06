@@ -25,7 +25,7 @@ function Input({ setName }){
 }
 
 function App() {
-    const [ name, setName ] = useState([""])
+    const [ name, setName ] = useState(["New User"])
 
   return (
       <div >
