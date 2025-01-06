@@ -10,14 +10,23 @@ function Greetings(props){
     )
 }
 
-function Input(){
+function Input({ setName }){
+
+    return (
+        <>
+        <input type={"text"}/>
+        </>
+    )
 }
 
 function App() {
-    const name = useState([""])
+    const [ name, setName ] = useState([""])
 
   return (
-      <Greetings name={name} style={{border: "solid red"}} aria-hidden></Greetings>
+      <div >
+          <Greetings name={name} style={{border: "solid red"}} aria-hidden></Greetings>
+          <Input setName={setName} />
+      </div>
   )
 }
 
