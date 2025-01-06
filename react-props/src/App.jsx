@@ -1,4 +1,5 @@
 import './App.css'
+import {useState} from "react";
 
 function Greetings(props){
     const { name } = props
@@ -9,10 +10,14 @@ function Greetings(props){
     )
 }
 
+function Input(){
+}
+
 function App() {
+    const name = useState([""])
 
   return (
-      <Greetings name='Victor' style={{border: "solid red"}} aria-hidden></Greetings>
+      <Greetings name={name} style={{border: "solid red"}} aria-hidden></Greetings>
   )
 }
 
