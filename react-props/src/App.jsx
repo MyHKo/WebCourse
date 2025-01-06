@@ -15,6 +15,8 @@ function Input({ setName }){
     return (
         <>
         <input type={"text"}/>
+            <br />
+        <button>Enter</button>
         </>
     )
 }
