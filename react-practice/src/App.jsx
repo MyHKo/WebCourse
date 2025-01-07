@@ -10,7 +10,7 @@ function App() {
      return () => {
          console.log("Clearing everything up")
      };
-    }, []);
+    }, [name]);
 
   return (
       <>
