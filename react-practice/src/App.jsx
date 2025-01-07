@@ -13,7 +13,12 @@ function App() {
     useEffect(() => {
      console.log("counter", counter);
      return () => {
-         console.log("clearing up");
+         setColor((prevState) => {
+         if(prevState === "green"){
+             return "blue"
+         }
+             return "green"
+         })
      };
     }, [counter]);
 
@@ -25,10 +30,6 @@ function App() {
               setCounter((prevState) => {
                 return prevState + 1
               })
-              if(color === "green")
-                  setColor("blue")
-              else
-                  setColor("green")
           }}>Add One
           </button>
           <br/>
