@@ -1,13 +1,32 @@
-import {useEffect, useState, useContext} from "react";
+import {useEffect, useState, useContext, useReducer} from "react";
 import React from "react"
 
 const ColorContext = React.createContext();
+const initialCounter = {
+    counter: 0
+}
+
+const counterReducer = (state, action) => {
+    if(action.type === 'INCREMENT'){
+        return {
+            ...state,
+            counter: state.counter + 1
+        }
+    }
+    if(action.type === 'DECREMENT'){
+        return {
+            ...state,
+            counter: state.counter - 1
+        }
+    }
+}
 
 function App() {
     const [counter, setCounter] = useState(0);
     const [name, setName] = useState("Beep");
     const [inputValue, setInputValue] = useState("");
     const [color, setColor] = useState("green");
+    const [counterState, dispatch] = useReducer(counterReducer, initialCounter);
 
 
     useEffect(() => {
@@ -20,16 +39,20 @@ function App() {
              return "green"
          })
      };
-    }, [counter]);
+    }, [counterState]);
 
   return (
       <>
-          <div>{name} {counter}</div>
+          <div>{name} {counterState.counter}</div>
           <br/>
+          {/*<button onClick={() => {*/}
+          {/*    setCounter((prevState) => {*/}
+          {/*      return prevState + 1*/}
+          {/*    })*/}
+          {/*}}>Add One*/}
+          {/*</button>*/}
           <button onClick={() => {
-              setCounter((prevState) => {
-                return prevState + 1
-              })
+              dispatch({ type: "INCREMENT" })
           }}>Add One
           </button>
           <br/>
@@ -43,7 +66,7 @@ function App() {
           </button>
 
           <ColorContext.Provider value={color}>
-              <Child />
+              <Child/>
           </ColorContext.Provider>
       </>
   )
@@ -52,7 +75,7 @@ function App() {
 function Child() {
     const color = useContext(ColorContext)
     return (
-        <h1 style={{ color }}>Child Header</h1>
+        <h1 style={{color}}>Child Header</h1>
     )
 }
 
