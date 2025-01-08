@@ -39,7 +39,9 @@ function App() {
     const [name, setName] = useState("Beep")
     const [counterState, dispatch] = useReducer(counterReducer, initialCounter)
     const [colorState, colorDispatch] = useReducer(colorReducer, initialColor)
+
     const nameRef = useRef(null)
+    const colorRef = useRef(null)
 
     useEffect(() => {
      console.log("counter", counter)
@@ -53,43 +55,50 @@ function App() {
           colorState: colorState,
           colorDispatch: colorDispatch
       }}>
-      <div>
-          <div>{name} {counterState.counter}</div>
-          <br/>
-          {/*<button onClick={() => {*/}
-          {/*    setCounter((prevState) => {*/}
-          {/*      return prevState + 1*/}
-          {/*    })*/}
-          {/*}}>Add One*/}
-          {/*</button>*/}
-          <button onClick={() => {
-              dispatch({ type: "INCREMENT" })
-              if(colorState.color === "green"){
-                  colorDispatch({type: "SET", color:"blue"})
-              } else {
-                  colorDispatch({type: "SET", color: "green"})
-              }
-          }}>Add One
-          </button>
-          <br/>
-          <input type={"text"}  ref={nameRef}/>
-          <br/>
-          <button onClick={() => {
-              setName(nameRef.current.value)
-          }}>Enter
-          </button>
+          <div>
+              <div>{name} {counterState.counter}</div>
+              <br/>
+              {/*<button onClick={() => {*/}
+              {/*    setCounter((prevState) => {*/}
+              {/*      return prevState + 1*/}
+              {/*    })*/}
+              {/*}}>Add One*/}
+              {/*</button>*/}
+              <button onClick={() => {
+                  dispatch({type: "INCREMENT"})
+                  if (colorState.color === "green") {
+                      colorDispatch({type: "SET", color: "blue"})
+                  } else {
+                      colorDispatch({type: "SET", color: "green"})
+                  }
+              }}>Add One
+              </button>
+              <br/>
+              <input type={"text"} ref={nameRef}/>
+              <br/>
+              <button onClick={() => {
+                  setName(nameRef.current.value)
+              }}>Enter
+              </button>
+              <br/>
+              <input type={"text"} ref={colorRef} placeholder={"Enter color"}/>
+              <br/>
+              <button onClick={() => {
+                  colorDispatch({type: "SET", color: colorRef.current.value})
+              }}>Enter
+              </button>
 
-          <Child/>
+              <Child/>
 
-      </div>
-    </ColorContext.Provider>
+          </div>
+      </ColorContext.Provider>
   )
 }
 
 function Child() {
-    const { colorState } = useContext(ColorContext)
+    const {colorState} = useContext(ColorContext)
     return (
-        <h1 style={{ color: colorState.color }}>Child Header</h1>
+        <h1 style={{color: colorState.color}}>Child Header</h1>
     )
 }
 
