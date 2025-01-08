@@ -1,4 +1,4 @@
-import {useEffect, useState, useContext, useReducer} from "react";
+import {useEffect, useState, useContext, useReducer, useRef} from "react";
 import React from "react"
 
 const ColorContext = React.createContext();
@@ -37,11 +37,10 @@ const colorReducer = (state, action) => {
 function App() {
     const [counter, setCounter] = useState(0);
     const [name, setName] = useState("Beep");
-    const [inputValue, setInputValue] = useState("");
     const [color, setColor] = useState("green");
     const [counterState, dispatch] = useReducer(counterReducer, initialCounter);
     const [colorState, colorDispatch] = useReducer(colorReducer, initialColor)
-
+    const nameRef = useRef(null);
 
     useEffect(() => {
      console.log("counter", counter);
@@ -74,12 +73,10 @@ function App() {
           }}>Add One
           </button>
           <br/>
-          <input type={"text"} value={inputValue} onChange={(event) => {
-              setInputValue(event.target.value)
-          }}/>
+          <input type={"text"}  ref={nameRef}/>
           <br/>
           <button onClick={() => {
-              setName(inputValue)
+              setName(nameRef.current.value)
           }}>Enter
           </button>
 
