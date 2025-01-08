@@ -6,6 +6,10 @@ const initialCounter = {
     counter: 0
 }
 
+const initialColor = {
+    color: "green"
+}
+
 const counterReducer = (state, action) => {
     if(action.type === 'INCREMENT'){
         return {
@@ -21,28 +25,37 @@ const counterReducer = (state, action) => {
     }
 }
 
+const colorReducer = (state, action) => {
+    if(action.type === "SET"){
+        return {
+            ...state,
+            color: action.color
+        }
+    }
+}
+
 function App() {
     const [counter, setCounter] = useState(0);
     const [name, setName] = useState("Beep");
     const [inputValue, setInputValue] = useState("");
     const [color, setColor] = useState("green");
     const [counterState, dispatch] = useReducer(counterReducer, initialCounter);
+    const [colorState, colorDispatch] = useReducer(colorReducer, initialColor)
 
 
     useEffect(() => {
      console.log("counter", counter);
      return () => {
-         setColor((prevState) => {
-         if(prevState === "green"){
-             return "blue"
-         }
-             return "green"
-         })
+         console.log("cleaning up");
      };
     }, [counterState]);
 
   return (
-      <>
+      <ColorContext.Provider value={{
+          colorState: colorState,
+          colorDispatch: colorDispatch
+      }}>
+      <div>
           <div>{name} {counterState.counter}</div>
           <br/>
           {/*<button onClick={() => {*/}
@@ -53,6 +66,11 @@ function App() {
           {/*</button>*/}
           <button onClick={() => {
               dispatch({ type: "INCREMENT" })
+              if(colorState.color === "green"){
+                  colorDispatch({type: "SET", color:"blue"})
+              } else {
+                  colorDispatch({type: "SET", color: "green"})
+              }
           }}>Add One
           </button>
           <br/>
@@ -65,17 +83,17 @@ function App() {
           }}>Enter
           </button>
 
-          <ColorContext.Provider value={color}>
-              <Child/>
-          </ColorContext.Provider>
-      </>
+          <Child/>
+
+      </div>
+    </ColorContext.Provider>
   )
 }
 
 function Child() {
-    const color = useContext(ColorContext)
+    const { colorState } = useContext(ColorContext)
     return (
-        <h1 style={{color}}>Child Header</h1>
+        <h1 style={{ color: colorState.color }}>Child Header</h1>
     )
 }
 
