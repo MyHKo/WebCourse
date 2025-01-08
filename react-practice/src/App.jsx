@@ -4,7 +4,8 @@ import {
     useContext,
     useReducer,
     useRef,
-    useMemo
+    useMemo,
+    useCallback, Component
 }
     from "react"
 import React from "react"
@@ -52,7 +53,12 @@ function App() {
     const colorRef = useRef(null)
 
     const counterSquareRoot = useMemo(() => {
+        console.log("Square root was run")
         return Math.sqrt(counterState.counter)
+    }, [counterState.counter])
+
+    const logCounterValue = useCallback(() => {
+        console.log("Call back was run")
     }, [counterState.counter])
 
     useEffect(() => {
@@ -103,6 +109,9 @@ function App() {
 
               <Child/>
 
+              <PureNestedComponent
+              logCounterValue={logCounterValue}/>
+
           </div>
       </ColorContext.Provider>
   )
@@ -113,6 +122,15 @@ function Child() {
     return (
         <h1 style={{color: colorState.color}}>Child Header</h1>
     )
+}
+
+class PureNestedComponent extends React.Component {
+    render() {
+        this.props.logCounterValue();
+        return (
+            <h3>Pure Nested Component</h3>
+        )
+    }
 }
 
 export default App
