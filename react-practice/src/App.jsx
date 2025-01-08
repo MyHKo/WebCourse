@@ -1,4 +1,12 @@
-import {useEffect, useState, useContext, useReducer, useRef} from "react"
+import {
+    useEffect,
+    useState,
+    useContext,
+    useReducer,
+    useRef,
+    useMemo
+}
+    from "react"
 import React from "react"
 
 const ColorContext = React.createContext();
@@ -42,6 +50,10 @@ function App() {
 
     const nameRef = useRef(null)
     const colorRef = useRef(null)
+
+    const counterSquareRoot = useMemo(() => {
+        return Math.sqrt(counterState.counter)
+    }, [counterState.counter])
 
     useEffect(() => {
      console.log("counter", counter)
@@ -87,6 +99,7 @@ function App() {
                   colorDispatch({type: "SET", color: colorRef.current.value})
               }}>Enter
               </button>
+              <p>{counterSquareRoot}</p>
 
               <Child/>
 
