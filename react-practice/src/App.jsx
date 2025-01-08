@@ -1,4 +1,4 @@
-import {useEffect, useState, useContext, useReducer, useRef} from "react";
+import {useEffect, useState, useContext, useReducer, useRef} from "react"
 import React from "react"
 
 const ColorContext = React.createContext();
@@ -35,17 +35,16 @@ const colorReducer = (state, action) => {
 }
 
 function App() {
-    const [counter, setCounter] = useState(0);
-    const [name, setName] = useState("Beep");
-    const [color, setColor] = useState("green");
-    const [counterState, dispatch] = useReducer(counterReducer, initialCounter);
+    const [counter, setCounter] = useState(0)
+    const [name, setName] = useState("Beep")
+    const [counterState, dispatch] = useReducer(counterReducer, initialCounter)
     const [colorState, colorDispatch] = useReducer(colorReducer, initialColor)
-    const nameRef = useRef(null);
+    const nameRef = useRef(null)
 
     useEffect(() => {
-     console.log("counter", counter);
+     console.log("counter", counter)
      return () => {
-         console.log("cleaning up");
+         console.log("cleaning up")
      };
     }, [counterState]);
 
