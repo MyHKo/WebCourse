@@ -9,6 +9,7 @@ import {
 }
     from "react"
 import React from "react"
+import Child from "./Child.jsx";
 
 const ColorContext = React.createContext();
 const initialCounter = {
@@ -115,13 +116,6 @@ function App() {
           </div>
       </ColorContext.Provider>
   )
-}
-
-function Child() {
-    const {colorState} = useContext(ColorContext)
-    return (
-        <h1 style={{color: colorState.color}}>Child Header</h1>
-    )
 }
 
 class PureNestedComponent extends React.Component {
