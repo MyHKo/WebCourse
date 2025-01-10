@@ -11,7 +11,7 @@ import {
 import React from "react"
 import Child from "./Child.jsx";
 
-const ColorContext = React.createContext();
+export const ColorContext = React.createContext();
 const initialCounter = {
     counter: 0
 }

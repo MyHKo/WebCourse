@@ -1,4 +1,5 @@
 import React, {useContext} from "react";
+import {ColorContext} from "./App.jsx";
 
 function Child() {
     const {colorState} = useContext(ColorContext)
