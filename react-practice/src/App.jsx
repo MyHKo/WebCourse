@@ -4,7 +4,8 @@ import {
     useReducer,
     useRef,
     useMemo,
-    useCallback, Component
+    useCallback,
+    useDebugValue,
 }
     from "react"
 import React from "react"
@@ -48,6 +49,8 @@ function useLocalStorageValue(key, initialValue) {
         const storedValue = JSON.parse(localStorage.getItem(key));
         return storedValue || initialValue;
     })
+
+    useDebugValue("useLocalStorageValue");
 
      const setStorageValue = (newValue) => {
         let valueToStore
