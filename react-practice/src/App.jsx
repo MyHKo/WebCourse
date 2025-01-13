@@ -67,6 +67,10 @@ function App() {
     const [name, setName] = useState("Beep")
     const [counterState, dispatch] = useReducer(counterReducer, initialCounter)
     const [colorState, colorDispatch] = useReducer(colorReducer, initialColor)
+    const [objectState, setObjectState] = useLocalStorageValue("object",{
+        property_1: "Property one",
+        property_2: "Property two",
+    })
 
     const nameRef = useRef(null)
     const colorRef = useRef(null)
@@ -130,6 +134,8 @@ function App() {
 
               <PureNestedComponent
               logCounterValue={logCounterValue}/>
+              <br />
+              {objectState.property_1}
 
           </div>
       </ColorContext.Provider>
