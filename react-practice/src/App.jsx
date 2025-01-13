@@ -50,8 +50,13 @@ function useLocalStorageValue(key, initialValue) {
     })
 
      const setStorageValue = (newValue) => {
-        setStateValue(newValue)
-         localStorage.setItem(key, JSON.stringify(newValue))
+        let valueToStore
+         if(newValue instanceof Function)
+             valueToStore = newValue(stateValue);
+         else
+             valueToStore = newValue;
+        setStateValue(valueToStore);
+         localStorage.setItem(key, JSON.stringify(valueToStore))
      }
 
      return [stateValue, setStorageValue]
