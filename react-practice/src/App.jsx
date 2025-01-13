@@ -43,6 +43,20 @@ const colorReducer = (state, action) => {
     }
 }
 
+function useLocalStorageValue(key, initialValue) {
+    const [stateValue, setStateValue] = React.useState(() => {
+        const storedValue = localStorage.getItem(key);
+        return storedValue || initialValue;
+    })
+
+     const setStorageValue = (newValue) => {
+        setStateValue(newValue)
+         localStorage.setItem(key, newValue)
+     }
+
+     return [stateValue, setStorageValue]
+}
+
 function App() {
     const [counter, setCounter] = useState(0)
     const [name, setName] = useState("Beep")
