@@ -45,13 +45,13 @@ const colorReducer = (state, action) => {
 
 function useLocalStorageValue(key, initialValue) {
     const [stateValue, setStateValue] = React.useState(() => {
-        const storedValue = localStorage.getItem(key);
+        const storedValue = JSON.parse(localStorage.getItem(key));
         return storedValue || initialValue;
     })
 
      const setStorageValue = (newValue) => {
         setStateValue(newValue)
-         localStorage.setItem(key, newValue)
+         localStorage.setItem(key, JSON.stringify(newValue))
      }
 
      return [stateValue, setStorageValue]
