@@ -136,6 +136,10 @@ function App() {
               logCounterValue={logCounterValue}/>
               <br />
               {objectState.property_1}
+              <br />
+              <button onClick={() => {
+                  setObjectState({...objectState, property_1: "Property one updated"})
+              }} >Update Property one</button>
 
           </div>
       </ColorContext.Provider>
