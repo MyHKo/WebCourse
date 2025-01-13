@@ -5,7 +5,7 @@ import {
     useRef,
     useMemo,
     useCallback,
-    useDebugValue,
+    useDebugValue, useLayoutEffect,
 }
     from "react"
 import React from "react"
@@ -93,6 +93,10 @@ function App() {
          console.log("cleaning up")
      };
     }, [counterState]);
+
+    useLayoutEffect(() => {
+        document.body.style.backgroundColor = "#000"
+    }, []);
 
   return (
       <ColorContext.Provider value={{
