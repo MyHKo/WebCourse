@@ -94,9 +94,9 @@ function App() {
      };
     }, [counterState]);
 
-    useLayoutEffect(() => {
-        document.body.style.backgroundColor = "#000"
-    }, []);
+    // useLayoutEffect(() => {
+    //     document.body.style.backgroundColor = "#000"
+    // }, []);
 
   return (
       <ColorContext.Provider value={{
