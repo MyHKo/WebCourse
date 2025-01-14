@@ -1,16 +1,20 @@
-let state;
+let state = []
+let index = 0;
 
 const ReactX = () => {
     const useState = (initialValue) => {
-        if(state === undefined) {
-            state = initialValue;
+        const localIndex = index
+        index++
+
+        if(state[localIndex] === undefined) {
+            state[localIndex] = initialValue;
         }
 
         const setState = (newState) => {
-            state = newState;
+            state[localIndex] = newState;
         }
 
-        return [state, setState];
+        return [state[localIndex], setState];
     }
 
 
