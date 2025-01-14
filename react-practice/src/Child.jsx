@@ -27,6 +27,9 @@ function Child() {
         <>
         <ChildInput ref={nestedInputRef}/>
         <h1 style={{color: colorState.color}}>Child Header</h1>
+            <button onClick={() => {
+                nestedInputRef.current.focusAndBlur()
+            }}>Focus and Blur</button>
         </>
     )
 }
