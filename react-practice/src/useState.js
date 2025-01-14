@@ -1,8 +1,10 @@
-import {useContext} from "react";
+let state;
 
 const ReactX = () => {
     const useState = (initialValue) => {
-        let state = initialValue;
+        if(state === undefined) {
+            state = initialValue;
+        }
 
         const setState = (newState) => {
             state = newState;
@@ -23,6 +25,8 @@ const Component = () => {
     const [state, setState] = useState(1)
 
     console.log(state)
+    setState(2)
 }
 
+Component()
 Component()
