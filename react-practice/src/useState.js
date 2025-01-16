@@ -59,14 +59,18 @@ const Component = () => {
 
     useEffect(() => {
         console.log("UseEffect was run")
-    }, [])
+    }, [name])
 
     console.log(state)
     console.log(name)
-    setState(2)
-    setName("John")
+    if(state !== 2)
+        setState(2)
+    if(name === "Bob" && state === 2)
+        setName("John")
 }
 
+Component()
+resetIndex()
 Component()
 resetIndex()
 Component()
