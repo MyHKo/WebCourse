@@ -42,7 +42,7 @@ const ReactX = () => {
 
 
     return {
-        useState
+        useState,
         useEffect
     }
 }
