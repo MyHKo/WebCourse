@@ -1,4 +1,4 @@
-let state = []
+let hooks = []
 let index = 0;
 
 const ReactX = () => {
@@ -6,20 +6,44 @@ const ReactX = () => {
         const localIndex = index
         index++
 
-        if(state[localIndex] === undefined) {
-            state[localIndex] = initialValue;
+        if(hooks[localIndex] === undefined) {
+            hooks[localIndex] = initialValue;
         }
 
         const setState = (newState) => {
-            state[localIndex] = newState;
+            hooks[localIndex] = newState;
         }
 
-        return [state[localIndex], setState];
+        return [hooks[localIndex], setState];
+    }
+
+    const useEffect = (callback, dependencyArray) => {
+        let hasChange = true;
+        const oldDependencies = hooks[index]
+
+        if(oldDependencies) {
+            hasChange = false
+
+            dependencyArray.forEach((item, index) => {
+                const oldDependency = oldDependencies[index];
+                const areTheSame = Object.is(item, oldDependency);
+
+                if(!areTheSame) {
+                    hasChange = true;
+                }
+            })
+        }
+
+        if(hasChange)
+            callback();
+        hooks[index] = dependencyArray;
+        index++
     }
 
 
     return {
         useState
+        useEffect
     }
 }
 
