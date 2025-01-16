@@ -10,6 +10,7 @@ import {
     from "react"
 import React from "react"
 import Child from "./Child.jsx";
+import ClassChildComponent from "./classChildComponent.jsx";
 
 export const ColorContext = React.createContext();
 const initialCounter = {
@@ -147,6 +148,8 @@ function App() {
               <button onClick={() => {
                   setObjectState({...objectState, property_1: "Property one updated"})
               }} >Update Property one</button>
+
+              <ClassChildComponent />
 
           </div>
       </ColorContext.Provider>

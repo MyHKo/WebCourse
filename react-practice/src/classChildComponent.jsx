@@ -25,3 +25,5 @@ class ClassChildComponent extends Component {
         )
     }
 }
+
+export default ClassChildComponent
