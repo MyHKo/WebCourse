@@ -51,11 +51,15 @@ const resetIndex = () => {
     index = 0;
 }
 
-const { useState } = ReactX();
+const { useState, useEffect } = ReactX();
 
 const Component = () => {
     const [state, setState] = useState(1)
     const [name, setName] = useState("Bob")
+
+    useEffect(() => {
+        console.log("UseEffect was run")
+    }, [])
 
     console.log(state)
     console.log(name)
