@@ -22,30 +22,25 @@ class ClassChildComponent extends Component {
 
         return (
             <>
-                <h1>This is a {this.state.name}</h1><br/>
-                <p>This is a child counter state: {this.state.counter}</p><br/>
-                <button onClick={() => {
-                    this.setState(
-                        {
-                            ...this.state,
-                            counter: this.state.counter + 1
-                        }
-                    )
-                }}
-                >+
+                <h1>This is a {this.state.name}</h1>
+                <p>This is a child counter state: {this.state.counter}</p>
+                <button
+                    onClick={() =>
+                        this.setState(prevState => ({ ...prevState, counter: prevState.counter + 1 }))
+                    }
+                >
+                    +
                 </button>
-                <button onClick={() => {
-                    this.setState(
-                        {
-                            ...this.state,
-                            counter: this.state.counter - 1
-                        }
-                    )
-                }}
-                >-
+                <button
+                    onClick={() =>
+                        this.setState(prevState => ({ ...prevState, counter: prevState.counter - 1 }))
+                    }
+                >
+                    -
                 </button>
             </>
-        )
+        );
+
     }
 }
 
