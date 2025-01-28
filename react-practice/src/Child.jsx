@@ -2,6 +2,7 @@ import React, {useContext, useImperativeHandle, useRef} from "react";
 import {ColorContext} from "./App.jsx";
 import ChildInput from "./ChildInput.jsx";
 
+//
 
 function Child() {
     const {colorState} = useContext(ColorContext)
