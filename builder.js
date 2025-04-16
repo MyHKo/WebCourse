@@ -36,6 +36,32 @@ class burgerBuilder {
     resetBurger = () => { this.burger.burger = {} }
 }
 
+class BurgerDirector {
+    builder = null
+
+    constructor(builder) {
+        this.builder = builder
+    }
+
+    createCheeseBurger() {
+        builder.resetBurger()
+        builder.addSauce()
+        builder.addCheese()
+        return builder.getBurger()
+    }
+
+    createDoubleBurger() {
+        builder.resetBurger()
+        builder.addSauce()
+        builder.addCheese()
+        builder.addLettuce()
+        builder.addTomato()
+        builder.addPatties(2)
+        builder.addBun(3)
+        return builder.getBurger()
+    }
+}
+
 const builder = new burgerBuilder()
 
 builder.addSauce()
