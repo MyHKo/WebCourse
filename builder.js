@@ -36,3 +36,13 @@ class burgerBuilder {
     resetBurger = () => { this.burger.burger = {} }
 }
 
+const builder = new burgerBuilder()
+
+builder.addSauce()
+builder.addLettuce()
+builder.addPatties(3)
+builder.addBun(5)
+
+const burger = new Burger(builder.getBurger())
+
+console.log(burger)
