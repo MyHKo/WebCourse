@@ -6,17 +6,17 @@ class Burger {
     patties = 1
     buns = 2
 
-    constructor(burgerBuilder) {
-        this.sauce = burgerBuilder.sauce
-        this.lettuce = burgerBuilder.lettuce
-        this.cheese = burgerBuilder.cheese
-        this.tomato = burgerBuilder.tomato
-        this.patties = burgerBuilder.patties
-        this.buns = burgerBuilder.buns
+    constructor(burgerTemplate) {
+        this.sauce = burgerTemplate.sauce
+        this.lettuce = burgerTemplate.lettuce
+        this.cheese = burgerTemplate.cheese
+        this.tomato = burgerTemplate.tomato
+        this.patties = burgerTemplate.patties
+        this.buns = burgerTemplate.buns
     }
 }
 
-class burgerBuilder {
+class BurgerBuilder {
     burger = {
         sauce: false,
         lettuce: false,
@@ -69,14 +69,14 @@ class BurgerDirector {
     }
 }
 
-const director = new BurgerDirector(new burgerBuilder())
-const builder = new burgerBuilder()
+const director = new BurgerDirector(new BurgerBuilder())
+const builder = new BurgerBuilder()
 builder.addSauce()
 builder.addCheese()
 builder.addLettuce()
 builder.addPatties(20)
+const burger = new Burger(builder.getBurger())
 
 console.log(director.createDoubleBurger())
 console.log(director.createCheeseBurger())
-console.log(builder.getBurger())
-
+console.log(burger)
