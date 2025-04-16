@@ -33,7 +33,14 @@ class burgerBuilder {
     addPatties = (number) => { this.burger.patties = number }
     addBun = (number) => { this.burger.buns = number }
     getBurger = () => { return this.burger }
-    resetBurger = () => { this.burger.burger = {} }
+    resetBurger = () => { this.burger = {
+        sauce: false,
+        lettuce: false,
+        cheese: false,
+        tomato: false,
+        patties: 1,
+        buns: 2,
+    } }
 }
 
 class BurgerDirector {
@@ -44,31 +51,32 @@ class BurgerDirector {
     }
 
     createCheeseBurger() {
-        builder.resetBurger()
-        builder.addSauce()
-        builder.addCheese()
-        return builder.getBurger()
+        this.builder.resetBurger()
+        this.builder.addSauce()
+        this.builder.addCheese()
+        return this.builder.getBurger()
     }
 
     createDoubleBurger() {
-        builder.resetBurger()
-        builder.addSauce()
-        builder.addCheese()
-        builder.addLettuce()
-        builder.addTomato()
-        builder.addPatties(2)
-        builder.addBun(3)
-        return builder.getBurger()
+        this.builder.resetBurger()
+        this.builder.addSauce()
+        this.builder.addCheese()
+        this.builder.addLettuce()
+        this.builder.addTomato()
+        this.builder.addPatties(2)
+        this.builder.addBun(3)
+        return this.builder.getBurger()
     }
 }
 
+const director = new BurgerDirector(new burgerBuilder())
 const builder = new burgerBuilder()
-
 builder.addSauce()
+builder.addCheese()
 builder.addLettuce()
-builder.addPatties(3)
-builder.addBun(5)
+builder.addPatties(20)
 
-const burger = new Burger(builder.getBurger())
+console.log(director.createDoubleBurger())
+console.log(director.createCheeseBurger())
+console.log(builder.getBurger())
 
-console.log(burger)
