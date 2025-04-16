@@ -15,3 +15,14 @@ class burger {
         this.buns = burgerBuilder.buns
     }
 }
+
+const burgerBuilder = {
+    burger: {},
+    addSauce: () => { this.burger.sauce = true },
+    addLettuce: () => { this.burger.lettuce = true },
+    addTomato: () => { this.burger.tomato = true },
+    addCheese: () => { this.burger.cheese = true },
+    addPatties: (number) => { this.burger.patties = number },
+    addBun: (number) => { this.burger.buns = number },
+    getBurger: () => { return this.burger },
+}
