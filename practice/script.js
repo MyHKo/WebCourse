@@ -3,9 +3,9 @@
 let name = "bib"
 
 function makeCounter() {
-    let name = "bob"
+    let counter = 0
     return function () {
-        return name
+        return counter++
     }
 }
 
@@ -54,3 +54,42 @@ function makeArmy() {
 
 let army = makeArmy();
 army[1]()
+
+async function f(url){
+    let response = await fetch(url);
+    let data = await response.json();
+    return data.name
+}
+
+function sayHi() {
+    console.log("Hello")
+}
+
+function debounceDecorator(func){
+    let canRun = true;
+    return function (...args) {
+        if(canRun){
+            func(args)
+            canRun = false
+            setTimeout(() => {canRun = true}, 1000)
+        }
+    }
+}
+
+let debouncedHi = debounceDecorator(sayHi)
+debouncedHi()
+debouncedHi()
+debouncedHi()
+debouncedHi()
+setTimeout(() => {debouncedHi()}, 1000)
+
+function deepClone(obj) {
+    let copy;
+    for (let key in obj) {
+        if(typeof obj[key] == 'object'){
+            copy[key] = deepClone(obj[key]);
+        } else {
+            copy[key] = obj[key];
+        }
+    }
+}
