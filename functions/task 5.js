@@ -1,12 +1,8 @@
-let arr = [1,1,2,5,3,4,5,6,2]
-arr = arr.filter((value, index, array) => {
-    if(array.indexOf(value) === index) {
-        return true
+function reduce(array, callback) {
+    let accumulator = 0;
+    let arrayCopy = array.slice();
+    for (let i = 0; i <= array.length; i++) {
+        accumulator = callback(accumulator, array[i], i, array);
     }
-    return false
-})
-console.log(arr)
-
-try{
-
+    return accumulator;
 }
